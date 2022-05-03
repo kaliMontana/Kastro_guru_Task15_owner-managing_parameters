@@ -6,11 +6,23 @@ repositories{
     mavenCentral()
 }
 
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
 dependencies{
     testImplementation(
-            "com.codeborne:selenide:6.3.5",
+            "com.codeborne:selenide:5.25.0",
+            "com.github.javafaker:javafaker:1.0.2",
             "org.junit.jupiter:junit-jupiter:5.8.2",
-            "org.slf4j:slf4j-simple:1.7.36"
+            "org.assertj:assertj-core:3.22.0",
+            "org.slf4j:slf4j-simple:1.7.36",
+
+            testCompileOnly ('org.projectlombok:lombok:1.18.24'),
+            testAnnotationProcessor ('org.projectlombok:lombok:1.18.24')
     )
 }
 
