@@ -2,6 +2,7 @@ package com.demoqa.formPages.components;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 
@@ -10,7 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.demoqa.util.Helper.format;
 
-public class ResultTableFormPage {
+public class ResultTableFormPageSteps {
     public static final String SUBMITTED_FORM_TITLE = "Thanks for submitting the form";
     public static final String STUDENT_NAME = "Student Name";
     public static final String STUDENT_MAIL = "Student Email";
@@ -27,12 +28,14 @@ public class ResultTableFormPage {
     ElementsCollection resultRowElements = $$(".table-responsive tr");
 
 
+    @Step("Проверить заголовка таблицы отправленных данных")
     public void checkSubmittedBlockTitleStep() {
         Assertions.assertThat(titleSubmittedFormElement.shouldBe(visible).getText())
                 .as("Ошибка проверки заголовки запольненого бланка.")
                 .isEqualTo(SUBMITTED_FORM_TITLE);
     }
 
+    @Step("Проверить таблицу отправленных данных")
     public void checkResultTableStep(
             String firstName,
             String lastName,
@@ -47,7 +50,7 @@ public class ResultTableFormPage {
             String pictureName,
             String currentAddress,
             String StateAndCity) {
-        final String DATA_OF_BIRTH_FORMAT = format("{} {},{}", day, month, year);
+        String DATA_OF_BIRTH_FORMAT = format("{} {},{}", day, month, year);
 
         SoftAssertions softAssertions = new SoftAssertions();
 
