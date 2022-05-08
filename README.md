@@ -1,7 +1,6 @@
 # ru.guru.tasks
-Написать тест на проверку названия Issue в репозитории через Web-интерфейс (This task is implemented in the https://demoqa.com/automation-practice-form).
+1. Взять свой код для http://demoqa.com/automation-practice-form
+2. Добавить аттачи для Allure – скриншот, page source, console.log и видео
+3. Cделать сборку в Jenkins
 
-Этот тест представить в трех вариантах:
-1. Чистый Selenide (с Listener)
-2. Лямбда шаги через step (name, () -> {})
-3. Шаги с аннотацией @Step
+В качестве ответа на нужно приложить ссылку на Allure-отчет в Jenkins (с видео)
