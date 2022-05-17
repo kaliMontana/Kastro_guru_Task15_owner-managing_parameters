@@ -1,8 +1,8 @@
 package com.demoqa.formTests;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.AfterAll;
+import com.demoqa.util.Attach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 
 public class TestSetup {
@@ -13,8 +13,11 @@ public class TestSetup {
         Configuration.browserSize = "1920x1080";
     }
 
-    @AfterAll
-    static void closeBrowser() {
-        Selenide.closeWindow();
+    @AfterEach
+    void addAttachments() {
+        Attach.screenshotAs("Test form screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
     }
 }

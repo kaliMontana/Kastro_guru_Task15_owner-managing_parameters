@@ -23,7 +23,7 @@ import static io.qameta.allure.Allure.step;
 @Feature("Registration Form")
 @Story("Filling Student's Registration Form")
 @Link(value = "Testing", url = "https://demoqa.com/automation-practice-form")
-public class demoqaTest extends TestSetup {
+public class DemoqaTest extends TestSetup {
     FormPage formPage = new FormPage();
     ResultTableFormPage tableFormPage = new ResultTableFormPage();
     FormPageStep formPageStep = new FormPageStep();
@@ -206,7 +206,7 @@ public class demoqaTest extends TestSetup {
                 HOBBIES.getValue(),
                 PICTURE_NAME.getValue(),
                 currentAddress,
-                STATE_AND_CITY.getValue()
+                "STATE_AND_CITY.getValue()"
         );
     }
 }
