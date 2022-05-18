@@ -42,6 +42,8 @@ allure {
     }
 }
 
+apply plugin: "java"
+
 test{
     useJUnitPlatform()
 
