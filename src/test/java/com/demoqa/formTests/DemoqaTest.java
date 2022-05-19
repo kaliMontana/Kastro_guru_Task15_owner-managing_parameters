@@ -206,7 +206,7 @@ public class DemoqaTest extends TestSetup {
                 HOBBIES.getValue(),
                 PICTURE_NAME.getValue(),
                 currentAddress,
-                "STATE_AND_CITY.getValue()"
+                STATE_AND_CITY.getValue()
         );
     }
 }
