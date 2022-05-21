@@ -6,6 +6,7 @@ import com.demoqa.formPages.components.CalendarComponentPage;
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class FormPage {
     SelenideElement firstNameElement = $("#firstName");
@@ -21,13 +22,18 @@ public class FormPage {
     SelenideElement stateElement = $("#state");
     SelenideElement optionStateElement = $("#react-select-3-option-2");
     SelenideElement cityElement = $("#city");
-    SelenideElement optionCityElement = $("#react-select-4-option-1");
+    SelenideElement optionCityElement = $("#react-select-4-option-0");
     SelenideElement submitElement = $("#submit");
 
     private static final String IMG_PATH = "img/wil.jpg";
 
     CalendarComponentPage calendarComponent = new CalendarComponentPage();
 
+
+    public void removeAnnuncesStep() {
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('fixedban').remove()");
+    }
 
     public void setFirstNameStep(String firstName) {
         firstNameElement.shouldBe(enabled).setValue(firstName);

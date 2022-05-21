@@ -9,6 +9,7 @@ import com.demoqa.formPages.components.ResultTableFormPageSteps;
 import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
@@ -31,11 +32,14 @@ public class DemoqaTest extends TestSetup {
 
 
     @Test
+    @Tag("withListener")
     @DisplayName("Student Registration Form with Listener")
     void fillFormWithListenerTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         open("/automation-practice-form");
+
+        formPage.removeAnnuncesStep();
 
         formPage.setFirstNameStep(firstName);
         formPage.setLastNameStep(lastName);
@@ -80,12 +84,17 @@ public class DemoqaTest extends TestSetup {
     }
 
     @Test
+    @Tag("withLambda")
     @DisplayName("Student Registration Form with Lambda")
     void fillFormWithLambdaTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Открыть страницу бланка", () -> {
             open("/automation-practice-form");
+        });
+
+        step("Отключить реклаку", () -> {
+            formPage.removeAnnuncesStep();
         });
 
         step("Вводить имя студента", () -> {
@@ -162,11 +171,14 @@ public class DemoqaTest extends TestSetup {
     }
 
     @Test
+    @Tag("withSteps")
     @DisplayName("Student Registration Form with steps")
     void fillFormWithStepsTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         formPageStep.openFormPageStep();
+
+        formPage.removeAnnuncesStep();
 
         formPageStep.setFirstNameStep(firstName);
         formPageStep.setLastNameStep(lastName);

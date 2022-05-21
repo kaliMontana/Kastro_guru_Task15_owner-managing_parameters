@@ -21,7 +21,8 @@ dependencies{
             "org.junit.jupiter:junit-jupiter:5.8.2",
             "org.assertj:assertj-core:3.22.0",
             "org.slf4j:slf4j-simple:1.7.36",
-            'io.qameta.allure:allure-selenide:2.17.3',
+            "io.qameta.allure:allure-selenide:2.17.3",
+            'org.aeonbits.owner:owner:1.0.12',
 
             testCompileOnly ('org.projectlombok:lombok:1.18.24'),
             testAnnotationProcessor ('org.projectlombok:lombok:1.18.24')
@@ -54,5 +55,23 @@ test{
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
+    }
+}
+
+task withListener(type: Test) {
+    useJUnitPlatform {
+        includeTags "withListener"
+    }
+}
+
+task withLambda(type: Test) {
+    useJUnitPlatform {
+        includeTags "withLambda"
+    }
+}
+
+task withSteps(type: Test) {
+    useJUnitPlatform {
+        includeTags "withSteps"
     }
 }

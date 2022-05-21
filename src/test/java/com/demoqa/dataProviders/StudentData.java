@@ -25,7 +25,7 @@ public enum StudentData {
             "wil.jpg"
     ),
     STATE_AND_CITY(
-            "Haryana Panipat"
+            "Haryana Karnal"
     );
 
     private final String value;

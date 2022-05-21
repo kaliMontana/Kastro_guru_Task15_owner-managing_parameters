@@ -27,7 +27,7 @@ public class FormPageStep {
     SelenideElement stateElement = $("#state");
     SelenideElement optionStateElement = $("#react-select-3-option-2");
     SelenideElement cityElement = $("#city");
-    SelenideElement optionCityElement = $("#react-select-4-option-1");
+    SelenideElement optionCityElement = $("#react-select-4-option-0");
     SelenideElement submitElement = $("#submit");
 
     private static final String IMG_PATH = "img/wil.jpg";
