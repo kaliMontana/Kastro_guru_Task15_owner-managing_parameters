@@ -8,6 +8,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import static com.demoqa.util.Helper.format;
+
 public class TestSetup {
 
     @BeforeAll
@@ -17,7 +19,12 @@ public class TestSetup {
 
         Configuration.baseUrl = config.baseUrl();
         Configuration.browserSize = config.browserSize();
-        Configuration.remote = config.selenoidRemote();
+        Configuration.remote = format("https://{}:{}@{}",
+                config.selenoidLogin(),
+                config.selenoidPassword(),
+                System.getProperty("selenoidUrl")
+        );
+
 
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
