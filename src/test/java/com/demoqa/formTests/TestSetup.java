@@ -19,10 +19,9 @@ public class TestSetup {
 
         Configuration.baseUrl = config.baseUrl();
         Configuration.browserSize = config.browserSize();
-        Configuration.remote = format("https://{}:{}@{}",
+        Configuration.remote = format("https://{}:{}@selenoid.autotests.cloud/wd/hub",
                 config.selenoidLogin(),
-                config.selenoidPassword(),
-                System.getProperty("selenoidUrl")
+                config.selenoidPassword()
         );
 
 
