@@ -45,7 +45,8 @@ allure {
 
 apply plugin: "java"
 
-test{
+tasks.withType(Test){
+    systemProperties(System.getProperties())
     useJUnitPlatform()
 
     ignoreFailures = true

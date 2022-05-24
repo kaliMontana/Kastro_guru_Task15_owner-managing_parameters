@@ -10,9 +10,6 @@ public interface CredentialsConfig extends Config {
     @Key("browserSize")
     String browserSize();
 
-    @Key("selenoid.base.url")
-    String selenoidBaseUrl();
-
     @Key("selenoid.login")
     String selenoidLogin();
 

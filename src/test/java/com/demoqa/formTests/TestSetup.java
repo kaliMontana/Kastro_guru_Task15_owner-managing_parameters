@@ -22,7 +22,7 @@ public class TestSetup {
         Configuration.remote = format("https://{}:{}@{}",
                 config.selenoidLogin(),
                 config.selenoidPassword(),
-                config.selenoidBaseUrl()
+                System.getProperty("selenoidUrl")
         );
 
 
