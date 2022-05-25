@@ -25,7 +25,6 @@ public class TestSetup {
                 System.getProperty("selenoidUrl")
         );
 
-
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;

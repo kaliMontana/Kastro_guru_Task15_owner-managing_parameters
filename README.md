@@ -13,3 +13,7 @@
 2.1 Сделать сборку в дженкинсе на код коллеги (тест должен успешно пройти)
 
 2.2 Подготовить код, чтобы на ваши тесты коллега сделал сборку с дженкинс.
+
+Комманд для запуска тестов из консоли в selenoid:
+gradle clean withListener -DselenoidUrl='selenoid.autotests.cloud/wd/hub' allureServe
+gradle clean test -DselenoidUrl='selenoid.autotests.cloud/wd/hub' allureServe
