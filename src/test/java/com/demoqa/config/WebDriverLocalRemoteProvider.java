@@ -47,8 +47,11 @@ public class WebDriverLocalRemoteProvider implements Supplier<WebDriver> {
            // capabilities.setCapability("browser", BrowserData.CHROME);
             //capabilities.setCapability("remote", config.getRemoteUrl());
             capabilities.setBrowserName(config.getBrowser());
-            capabilities.setVersion(config.getBrowser());
-            RemoteWebDriver driver = new RemoteWebDriver(config.getRemoteUrl(), capabilities);
+            //capabilities.setVersion(config.getBrowser());
+
+            //RemoteWebDriver driver = new RemoteWebDriver(config.getRemoteUrl(), capabilities);
+            capabilities.setCapability("URL", config.getRemoteUrl());
+            RemoteWebDriver driver = new RemoteWebDriver(capabilities);
             return driver;
         }
         throw new RuntimeException("No such browser");
