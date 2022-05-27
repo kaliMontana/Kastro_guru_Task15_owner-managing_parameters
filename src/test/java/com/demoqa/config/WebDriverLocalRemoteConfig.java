@@ -14,6 +14,12 @@ public interface WebDriverLocalRemoteConfig extends Config {
     @DefaultValue("https://about.gitlab.com/")
     String getBaseUrl();
 
-    @Key("remoteUrl")
+    @Key("browser")
+    String getBrowser();
+
+    @Key("version")
+    String getVersion();
+
+    @Key("remote.Url")
     URL getRemoteUrl();
 }

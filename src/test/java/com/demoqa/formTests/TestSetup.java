@@ -11,7 +11,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import static com.demoqa.util.Helper.format;
 
 public class TestSetup {
-
+/*
     @BeforeAll
     static void setup() {
         CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
@@ -36,5 +36,5 @@ public class TestSetup {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
-    }
+    }*/
 }

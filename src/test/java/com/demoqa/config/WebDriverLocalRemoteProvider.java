@@ -12,6 +12,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.util.function.Supplier;
 
@@ -32,32 +33,22 @@ public class WebDriverLocalRemoteProvider implements Supplier<WebDriver> {
         return driver;
     }
 
-    private WebDriver createWebDriver() throws MalformedURLException {
-      /* if (config.getBrowser().equals(BrowserData.CHROME)) {
+    private WebDriver createWebDriver(){
+        if (System.getProperty("launcher").equals("localLauncher")) {
             WebDriverManager.chromedriver().setup();
             WebDriverManager.chromedriver().driverVersion(config.getVersion()).setup();
 
             return new ChromeDriver();
         }
-        if (config.getBrowser().equals(BrowserData.FIREFOX)) {
-            WebDriverManager.firefoxdriver().setup();
-            WebDriverManager.firefoxdriver().driverVersion(config.getVersion()).setup();
-
-            return new FirefoxDriver();
-        }*/
-        if (System.getProperties().get("launcher").equals("localLauncher")) {
-            WebDriverManager.chromedriver().setup();
-            //WebDriverManager.chromedriver().driverVersion(config.getVersion()).setup();
-
-            return new ChromeDriver();
-        }
-        if (System.getProperties().get("launcher").equals("remoteLauncher")) {
-           // Configuration.remote = String.valueOf(config.getRemoteUrl());
+        if (System.getProperty("launcher").equals("remoteLauncher")) {
+           //Configuration.remote = String.valueOf(config.getRemoteUrl());
 
             DesiredCapabilities capabilities = new DesiredCapabilities();
            // capabilities.setCapability("browser", BrowserData.CHROME);
-            capabilities.setCapability("remote", config.getRemoteUrl());
-            RemoteWebDriver driver = new RemoteWebDriver(capabilities);
+            //capabilities.setCapability("remote", config.getRemoteUrl());
+            capabilities.setBrowserName(config.getBrowser());
+            capabilities.setVersion(config.getBrowser());
+            RemoteWebDriver driver = new RemoteWebDriver(config.getRemoteUrl(), capabilities);
             return driver;
         }
         throw new RuntimeException("No such browser");
