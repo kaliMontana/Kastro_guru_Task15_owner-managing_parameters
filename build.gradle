@@ -85,4 +85,10 @@ task withSteps(type: Test) {
     useJUnitPlatform {
         includeTags "withSteps"
     }
+
+task title(type: Test) {
+        useJUnitPlatform {
+            includeTags "title"
+        }
+    }
 }
