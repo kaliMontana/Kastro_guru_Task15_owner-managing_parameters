@@ -42,10 +42,8 @@ public class WebDriverLocalRemoteProvider implements Supplier<WebDriver> {
             System.out.println("config.getRemoteUrl() " + config.getRemoteUrl()); // TODO null почему?
 
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            //capabilities.setBrowserName("chrome");
-            // capabilities.setVersion("102"); // TODO version не принимает почему?
-            capabilities.setCapability("browserName", "chrome");
-            // capabilities.setCapability("browserVersion", "101");
+            capabilities.setBrowserName("chrome");
+            capabilities.setVersion("100");
 
             return new RemoteWebDriver(new URL("https://user1:1234@selenoid.autotests.cloud/wd/hub/"), capabilities);
 //new URL("https://user1:1234@selenoid.autotests.cloud/wd/hub/")
