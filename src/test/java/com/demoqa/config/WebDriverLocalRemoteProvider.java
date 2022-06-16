@@ -1,18 +1,14 @@
 package com.demoqa.config;
 
-import com.codeborne.selenide.Configuration;
-import com.demoqa.dataProviders.BrowserData;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.SneakyThrows;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
 import java.util.function.Supplier;
 
@@ -33,26 +29,34 @@ public class WebDriverLocalRemoteProvider implements Supplier<WebDriver> {
         return driver;
     }
 
-    private WebDriver createWebDriver(){
+    private WebDriver createWebDriver() throws MalformedURLException {
         if (System.getProperty("launcher").equals("localLauncher")) {
             WebDriverManager.chromedriver().setup();
             WebDriverManager.chromedriver().driverVersion(config.getVersion()).setup();
 
             return new ChromeDriver();
-        }
-        if (System.getProperty("launcher").equals("remoteLauncher")) {
-           //Configuration.remote = String.valueOf(config.getRemoteUrl());
+        } else if (System.getProperty("launcher").equals("remoteLauncher")) {
+
+            System.out.println("config.getBrowser() " + config.getBrowserName()); // TODO null почему?
+            System.out.println("config.getVersion() " + config.getVersion()); // TODO null почему?
+            System.out.println("config.getRemoteUrl() " + config.getRemoteUrl()); // TODO null почему?
 
             DesiredCapabilities capabilities = new DesiredCapabilities();
-           // capabilities.setCapability("browser", BrowserData.CHROME);
-            //capabilities.setCapability("remote", config.getRemoteUrl());
-            capabilities.setBrowserName(config.getBrowser());
-            //capabilities.setVersion(config.getBrowser());
+            //capabilities.setBrowserName("chrome");
+            // capabilities.setVersion("102"); // TODO version не принимает почему?
+            capabilities.setCapability("browserName", "chrome");
+            // capabilities.setCapability("browserVersion", "101");
 
-            //RemoteWebDriver driver = new RemoteWebDriver(config.getRemoteUrl(), capabilities);
-            capabilities.setCapability("URL", config.getRemoteUrl());
-            RemoteWebDriver driver = new RemoteWebDriver(capabilities);
-            return driver;
+            return new RemoteWebDriver(new URL("https://user1:1234@selenoid.autotests.cloud/wd/hub/"), capabilities);
+//new URL("https://user1:1234@selenoid.autotests.cloud/wd/hub/")
+           /* ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.setCapability("browserVersion", config.getVersion());
+            chromeOptions.setCapability("platformName", "Windows");
+
+            WebDriver driver = new RemoteWebDriver(new URL(String.valueOf(config.getRemoteUrl())), chromeOptions);
+
+
+            return driver;*/
         }
         throw new RuntimeException("No such browser");
     }

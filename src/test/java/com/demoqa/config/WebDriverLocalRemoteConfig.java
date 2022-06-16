@@ -1,6 +1,5 @@
 package com.demoqa.config;
 
-import com.demoqa.dataProviders.BrowserData;
 import org.aeonbits.owner.Config;
 
 import java.net.URL;
@@ -15,11 +14,11 @@ public interface WebDriverLocalRemoteConfig extends Config {
     String getBaseUrl();
 
     @Key("browser")
-    String getBrowser();
+    String getBrowserName();
 
     @Key("version")
     String getVersion();
 
-    @Key("remote.Url")
+    @Key("remote.url")
     URL getRemoteUrl();
 }
