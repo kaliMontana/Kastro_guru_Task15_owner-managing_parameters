@@ -34,3 +34,9 @@
 В качестве ответа на задание:
 
 Ссылку на репозиторий в Github и  закомиченый конфиг файл
+
+Команды для запуска из консоля:
+
+gradle clean title -Dlauncher=remoteLauncher allureServe
+
+gradle clean title -Dlauncher=localLauncher allureServe

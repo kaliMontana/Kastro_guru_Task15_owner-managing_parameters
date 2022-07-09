@@ -9,17 +9,17 @@ import org.junit.jupiter.api.Test;
 import static io.qameta.allure.Allure.step;
 
 public class SeleniumOwnerTest extends WebDriverSettings {
-    WebDriverLocalRemoteConfig config;
+	WebDriverLocalRemoteConfig config;
 
-    @Test
-    @Tag("title")
-    public void checkTitleTest() {
-        step("Title", () -> {
-            String title = driver.getTitle();
+	@Test
+	@Tag("title")
+	public void checkTitleTest() {
+		step("Title", () -> {
+			String title = driver.getTitle();
 
-            Assertions.assertThat(title)
-                    .as("Mistake in the checking title")
-                    .isEqualTo("The One DevOps Platform | GitLab");
-        });
-    }
+			Assertions.assertThat(title)
+					.as("Mistake in the checking title")
+					.isEqualTo("The One DevOps Platform | GitLab");
+		});
+	}
 }
